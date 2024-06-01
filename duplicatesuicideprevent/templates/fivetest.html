@@ -1,0 +1,211 @@
+<!-- <!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!-- <link href="responsitive.css" rel="stylesheet" type="text/css"> -->
+<title>Mental Assessment</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        color: #333;
+    }
+    header {
+        background-color: #22043d; /* Violet */
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        margin: 0 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    nav a:hover {
+        background-color: #38016bcb; /* Slightly darker violet */
+    }
+    .main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    p {
+        font-size: 1.2em;
+        line-height: 1.6;
+    }
+    .question {
+        font-weight: bold;
+    }
+    fieldset {
+        border: none;
+        margin-bottom: 20px;
+    }
+    input[type="radio"] {
+        margin-right: 10px;
+    }
+   #back, input[type="submit"] {
+        background-color: #38016bcb; /* Violet */
+        color: #fff;
+        font-size: 1.2em;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    #back{
+        text-decoration: none;
+        margin-left: 75%;
+    }
+  #back:hover,  input[type="submit"]:hover {
+        background-color: #7bb5e1; /* Slightly darker violet */
+    }
+</style>
+</head>
+
+<body>
+<header>
+<h1>Psychological Test</h1>
+
+</header>
+
+<!-- <nav>
+    <ul>
+        <li><a href="index.html"><b>Home</b></a></li>
+        <li><a href=""><b>About</b></a></li>
+        <li><a href=""><b>Topics</b></a></li>  
+        <li style="float:right"><a href="https://goo.gl/forms/NyQObKza4ckmmHpo1" target="_blank"><b>Feedback</b></a></li>
+    </ul>
+</nav> -->
+
+<div class="main">
+    <!-- <h1>Stress Assessment Quiz</h1> -->
+    <!-- <p><i>Answer the following questions based on your experiences in the last month.</i></p> -->
+    {% if 'user_id' in session %}
+    <form id="myForm"  action="/submit-pss1" method="post">
+        
+    <!-- <form id="myForm" action="submit.php" method="post"></form> -->
+        <p class="question">1. How are you feeling about your studies? <p class="tamil">கடந்த மாதத்தில், எதிர்பாராத விதமாக நடந்த சம்பவத்தால் நீங்கள் எத்தனை முறை வருத்தப்பட்டீர்கள்?</p>
+   
+        <fieldset id="q1">
+            <input type="radio" name="q1" value="0" id="q1a" required><label for="q1a">Okay</label><br>
+            <input type="radio" name="q1" value="1" id="q1b" required><label for="q1b">Overwhelmed</label><br>
+            <input type="radio" name="q1" value="2" id="q1c" required><label for="q1c">Stressed</label><br>
+         </fieldset>
+        <!-- Add more questions here with the same format -->
+        <p class="question">2.How are things going with your friends/family?</p>
+        <p>உங்கள் நண்பர்கள்/குடும்பத்துடன் விஷயங்கள் எப்படி நடக்கிறது?</p>
+
+        <fieldset id="q2">
+            <input type="radio" name="q2" value="0" id="q1a" required><label for="q1a">Good</label><br>
+            <input type="radio" name="q2" value="1" id="q1b" required><label for="q1b">Ok</label><br>
+            <input type="radio" name="q2" value="2" id="q1c" required><label for="q1c">Strained</label><br>
+        </fieldset>
+        <p class="question">3.Do you ever feel inferior compared to others? </p>
+        <p>மற்றவர்களுடன் ஒப்பிடும்போது நீங்கள் எப்போதாவது தாழ்வாக உணர்கிறீர்களா?</p>  <fieldset id="q3">
+            <input type="radio" name="q3" value="0" id="q1a" required><label for="q1a">No</label><br>
+            <input type="radio" name="q3" value="1" id="q1b" required><label for="q1b">Sometimes</label><br>
+            <input type="radio" name="q3" value="2" id="q1c" required><label for="q1c">Yes</label><br>
+ </fieldset> 
+       
+
+        <p class="question">4.How do you feel about managing your future health and
+            responsibilities? </p> 
+            <fieldset id="q4">
+            <input type="radio" name="q4" value="0" id="q1a" required><label for="q1a">confident</label><br>
+            <input type="radio" name="q4" value="1" id="q1b" required><label for="q1b">Sometimes</label><br>
+            <input type="radio" name="q4" value="2" id="q1c" required><label for="q1c">No</label><br>
+       </fieldset> 
+            <p class="question">5.How are you feeling about your workload and projects?
+               </p> <fieldset id="q5">
+                <input type="radio" name="q5" value="0" id="q1a" required><label for="q1a">Manageable</label><br>
+                <input type="radio" name="q5" value="1" id="q1b" required><label for="q1b">Overwhelmed</label><br>
+                <input type="radio" name="q5" value="2" id="q1c" required><label for="q1c">Stressed</label><br>
+            </fieldset>
+            <p class="question">6.Do you feel any triggers from the following?</p>
+            <fieldset id="q6">
+                <input type="radio" name="q6" value="0" id="q1a" required><label for="q1a">uncertainty</label><br>
+                <input type="radio" name="q6" value="1" id="q1b" required><label for="q1b">Comparison</label><br>
+                <input type="radio" name="q6" value="2" id="q1c" required><label for="q1c">Criticism</label><br>
+            </fieldset>
+            <p class="question">7.How do you cope with stress?</p>
+            <fieldset id="q7">
+                <input type="radio" name="q7" value="0" id="q1a" required><label for="q1a">Distancing</label><br>
+                <input type="radio" name="q7" value="1" id="q1b" required><label for="q1b">Talking</label><br>
+                <input type="radio" name="q7" value="2" id="q1c" required><label for="q1c">Ignoring</label><br>
+            </fieldset>
+            <p class="question">8.What is the challenge you are facing mainly in relationship?</p>
+            <fieldset id="q8">
+                <input type="radio" name="q8" value="0" id="q1a" required><label for="q1a">Communication</label><br>
+                <input type="radio" name="q8" value="1" id="q1b" required><label for="q1b">Time spent</label><br>
+                <input type="radio" name="q8" value="2" id="q1c" required><label for="q1c">Trust issues</label><br>
+            </fieldset>
+            <p class="question">9.Which specific tasks feel most overwhelming to you?
+            </p>
+            <fieldset id="q9">
+                <input type="radio" name="q9" value="0" id="q1a" required><label for="q1a">Writing assignments</label><br>
+                <input type="radio" name="q9" value="1" id="q1b" required><label for="q1b">Test preparation</label><br>
+                <input type="radio" name="q9" value="2" id="q1c" required><label for="q1c">group project</label><br>
+            </fieldset>
+            <p class="question">10.Did you feel any of this challenge?
+            </p>
+            <fieldset id="q10">
+                <input type="radio" name="q10" value="0" id="q1a" required><label for="q1a">Time management</label><br>
+                <input type="radio" name="q10" value="1" id="q1b" required><label for="q1b">subject complexity</label><br>
+                <input type="radio" name="q10" value="2" id="q1c" required><label for="q1c">Education background</label><br>
+            </fieldset>
+
+
+        
+        <!-- <input type="button" value="Submit" id="submit"> -->
+        <!-- <input type="submit" value="Submit" id="submit"> -->
+        <input type="submit" value="Submit" name="submit" id="submit">
+        <a id="back" href="/">Back</a>
+        <p style="font-size:20px;background-color:lavender;" id="score"></p>
+    </form>
+    {% else %}
+    <p>Please sign in to take the PSS test.</p>
+        <a href="{{ url_for('signinup') }}">Sign In/Up</a>
+    {% endif %}
+</div>
+<!--  -->
+<!--  -->
+
+<!--  -->
+<!--  -->
+
+<!-- <script>
+    // JavaScript code for handling form submission and scoring can be added here
+ // JavaScript code for handling form submission
+ document.getElementById("myForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Show success message
+        alert("Form submitted successfully!");
+
+        // Optionally, you can also reset the form after submission
+        // document.getElementById("myForm").reset();
+    }); 
+</script>
+
+</body>
+</html> -->

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Reminder</title>
+</head>
+<body>
+    <h1>Test Reminder</h1>
+    <button id="takeTest" disabled>Take Test</button>
+
+    <script>
+        // Event listener for the "Take Test" button
+        const takeTestButton = document.getElementById('takeTest');
+        takeTestButton.addEventListener('click', () => {
+            // Send AJAX request to Flask route to trigger email notification
+            fetch('/send-test-notification')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to send test notification');
+                    }
+                    console.log('Test notification sent successfully');
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+
+        // Simulate enabling the "Take Test" button after a delay (e.g., 5 seconds)
+        setTimeout(() => {
+            takeTestButton.disabled = false;
+        }, 2000); // 5 seconds
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Counts</title>
+</head>
+<body>
+    <h1>Emotion Counts</h1>
+    <ul>
+        {% for emotion, count in emotion_counts.items() %}
+            <li>{{ emotion }}: {{ count }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

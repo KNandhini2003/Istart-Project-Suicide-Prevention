@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+    :root {
+        --primary-color: #2c045de7; /* Primary button color */
+        --secondary-color: #272727; /* Secondary text color */
+        --background-color: #f8f9fa; /* Light background color */
+        --border-color: #dee2e6; /* Border color */
+        --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Common font family */
+    }
+
+    body {
+        font-family: var(--font-family);
+        background-color: var(--background-color);
+        margin: 0;
+        padding: 20px;
+        color: var(--secondary-color);
+    }
+
+    h2 {
+        color: var(--primary-color);
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .data-table th, .data-table td {
+        border: 1px solid var(--border-color);
+        padding: 10px;
+        text-align: left;
+    }
+
+    .data-table th {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .analysis-result p {
+        color: var(--primary-color);
+    }
+
+    .btn-pss {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            padding: 10px;
+        }
+    }
+    #back{
+        text-decoration: none;
+        margin-left: 75%;
+        background-color: #38016bcb; /* Violet */
+        color: #fff;
+        font-size: 1.2em;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="analysis-result">
+    <h2>User Data</h2>
+    {% if 'user_id' in session %}
+    <table>
+        <tr>
+            <th>Label</th>
+            <th>Value</th>
+        </tr>
+        {% for label, value in data.items() %}
+        <tr>
+            <td>{{ label }}</td>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <!--  -->
+    {% set increment = 0 %}
+    <!--  -->
+    {% if data.heartrate|int >= 60 and data.heartrate|int <= 100 %}
+        <p>Heart Rate: Normal</p>
+    {% else %}
+        <p>Heart Rate: Risk</p>
+        {% set increment = increment + 1 %}
+    {% endif %}
+    {% if data.stressscore|int >= 0 and data.stressscore|int <= 50 %}
+        <p>Stress Score: Normal</p>
+    {% else %}
+        <p>Stress Score: Risk</p>
+        {% set increment = increment + 1 %}
+        <script>
+            // Send AJAX request to Flask route to trigger email notification
+            fetch('/send-stresslevel-notification')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to send test notification');
+                    }
+                    console.log('Test notification sent successfully');
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+    
+        </script>
+    {% endif %}
+    {% if data.Calories|int >= 1500 %}
+        <p>Calories: Normal</p>
+    {% else %}
+        <p>Calories: Risk</p>
+        <!-- {% set increment = increment + 1 %} -->
+        <script>
+            // Send AJAX request to Flask route to trigger email notification
+            fetch('/send-cal-notification')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to send test notification');
+                    }
+                    console.log('Test notification sent successfully');
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+    
+        </script>
+        {% set increment = increment + 1 %}
+    {% endif %}
+    {% if data.SedentaryMinutes|int < 700 %}
+        <p>Sedentary Minutes: Normal</p>
+    {% else %}
+        <p>Sedentary Minutes: Risk</p>
+        {% set increment = increment + 1 %}
+    {% endif %}
+    {% if data.MinutesAsleep|int > 200 %}
+    <p>MinutesAsleep:Normal</p>
+    {%else%}
+        <p>MinutesAsleep:Risk</p>
+        {% set increment = increment + 1 %}
+    {%endif%}
+    <!-- {% if data.heartrate|int < 60 or data.heartrate|int > 100 or data.stressscore|int > 75  or data.Calories|int < 1500  or data.SedentaryMinutes|int < 700  or data.MinutesAsleep > 200 %}
+        <button onclick="window.location.href='/take_pss_test'">Take PSS Test</button>
+    {% endif %} -->
+    {% if increment >= 3 %}
+
+    <a href="{{ url_for('pss_test') }}"   class="btn-pss">Take PSS Test</a><a id="back" href="/">Back</a>
+   <!-- <script>
+        // Event listener for the "Take Test" button
+        const takeTestButton = document.querySelector('.btn-pss');
+        takeTestButton.addEventListener('click', () => {
+            // Send AJAX request to Flask route to trigger email notification
+            fetch('/send-test-notification')
+                .then(response => { 
+    //                 if (!response.ok) {
+    //                     throw new Error('Failed to send test notification');
+    //                 }
+    //                 console.log('Test notification sent successfully');
+    //             })
+    //             .catch(error => {
+    //                 console.error(error);
+    //             });
+    //     });
+    // </script>  -->
+    <script>
+        // Send AJAX request to Flask route to trigger email notification
+        fetch('/send-test-notification')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to send test notification');
+                }
+                console.log('Test notification sent successfully');
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+    </script>
+    {% endif %}
+
+    {% else %}
+    <p>Please sign in to take the PSS test.</p>
+        <a href="{{ url_for('signinup') }}">Sign In/Up</a>
+    {% endif %}
+    </div>
+</body>
+</html>

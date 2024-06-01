@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Stream</title>
+</head>
+<body>
+    <h1>Webcam Stream</h1>
+    <video id="videoElement" autoplay></video>
+    
+    <script>
+        // Get access to the webcam
+        async function getMedia() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const videoElement = document.getElementById('videoElement');
+                videoElement.srcObject = stream;
+            } catch (err) {
+                console.error('Error accessing the webcam: ', err);
+            }
+        }
+
+        // Call the function to get access to the webcam when the page loads
+        window.onload = function() {
+            getMedia();
+        };
+    </script>
+</body>
+</html>

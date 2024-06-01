@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Questionnaire</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    .questionnaire {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .question {
+        margin-bottom: 20px;
+    }
+    .follow-up-question {
+        display: none;
+    }
+</style>
+</head>
+<body>
+<div class="questionnaire">
+    <div id="question1" class="question">
+        <p><strong>Question 1: Academic Distress</strong></p>
+        <p>How are you feeling about your studies?</p>
+        <label><input type="radio" name="studyFeeling" value="stressed"> Stressed</label><br>
+        <label><input type="radio" name="studyFeeling" value="okay"> Okay</label><br>
+        <label><input type="radio" name="studyFeeling" value="overwhelmed"> Overwhelmed</label><br>
+    </div>
+    <div id="challengeQuestion" class="question" style="display: none;">
+        <label>Did you feel any of this challenge?</label><br>
+        <input type="radio" name="challenges" value="time"> Time Management<br>
+        <input type="radio" name="challenges" value="complexity"> Subject Complexity<br>
+        <input type="radio" name="challenges" value="learning"> Learning Style<br>
+        <input type="radio" name="challenges" value="background"> Education Background<br>
+    </div>
+    <div id="specificTaskQuestion" class="question" style="display: none;">
+        <label>Which specific tasks feel most overwhelming to you?</label><br>
+        <input type="radio" name="tasks" value="writing"> Writing Assignments<br>
+        <input type="radio" name="tasks" value="test"> Test Preparation<br>
+        <input type="radio" name="tasks" value="group"> Group Projects<br>
+    </div>
+    <div id="question2" class="question follow-up-question">
+        <p><strong>Question 2: Relationship</strong></p>
+        <p>How are things going with your friends/family?</p>
+        <label><input type="radio" name="relationshipFeeling" value="good"> Good</label><br>
+        <label><input type="radio" name="relationshipFeeling" value="okay"> Okay</label><br>
+        <label><input type="radio" name="relationshipFeeling" value="strained"> Strained</label><br>
+    </div>
+    <div class="question" id="challenge2" style="display: none;">
+        <label>What is the main challenge you are facing?</label><br>
+        <input type="radio" name="familyChallenge" value="communication"> Communication<br>
+        <input type="radio" name="familyChallenge" value="time"> Time spent<br>
+        <input type="radio" name="familyChallenge" value="trust"> Trust issues<br>
+    </div>
+    <div class="question" id="copeQuestion" style="display: none;">
+        <label>How do you cope with stress?</label><br>
+        <input type="radio" name="stressCoping" value="talking"> Talking<br>
+        <input type="radio" name="stressCoping" value="distancing"> Distancing<br>
+        <input type="radio" name="stressCoping" value="ignoring"> Ignoring<br>
+    </div>
+    <div id="question3" class="question follow-up-question">
+        <p><strong>Question 3: Insecurities</strong></p>
+        <p>Do you ever feel inferior compared to others?</p>
+        <label><input type="radio" name="inferiorityFeeling" value="yes"> Yes</label><br>
+        <label><input type="radio" name="inferiorityFeeling" value="no"> No</label><br>
+        <label><input type="radio" name="inferiorityFeeling" value="sometimes"> Sometimes</label><br>
+    </div>
+    <div id="question4" class="question follow-up-question">
+        <p><strong>Question 4: Future Health and Responsibilities</strong></p>
+        <p>How do you feel about managing your future health and responsibilities?</p>
+        <label><input type="radio" name="futureManagementFeeling" value="confident"> Confident</label><br>
+        <label><input type="radio" name="futureManagementFeeling" value="concerned"> Concerned</label><br>
+        <label><input type="radio" name="futureManagementFeeling" value="unsure"> Unsure</label><br>
+    </div>
+    <button id="nextButton">Next</button>
+</div>
+
+<script>
+    const nextButton = document.getElementById('nextButton');
+    const question1 = document.getElementById('question1');
+    const question2 = document.getElementById('question2');
+    const question3 = document.getElementById('question3');
+    const question4 = document.getElementById('question4');
+
+    nextButton.addEventListener('click', () => {
+        if (question1.style.display !== 'none') {
+            question1.style.display = 'none';
+            question2.style.display = 'block';
+        } else if (question2.style.display !== 'none') {
+            const relationshipFeeling = document.querySelector('input[name="relationshipFeeling"]:checked').value;
+            if (relationshipFeeling === 'strained') {
+                question2.style.display = 'none';
+                document.getElementById('challenge2').style.display = 'block';
+            } else {
+                question2.style.display = 'none';
+                question3.style.display = 'block';
+            }
+        } else if (question3.style.display !== 'none') {
+            question3.style.display = 'none';
+            question4.style.display = 'block';
+            nextButton.textContent = 'Submit';
+        } else {
+            // Here you can handle submitting the form or performing further actions
+            alert('Form submitted!');
+        }
+    });
+</script>
+
+
+</body>
+</html>
+

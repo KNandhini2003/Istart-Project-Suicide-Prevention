@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Distress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        header {
+            background-color: #22043d; /* Violet */
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #38016bcb; /* Slightly darker violet */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #38016bcb; /* Violet */
+            color: #fff;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #7bb5e1; /* Slightly darker violet */
+        }
+        footer {
+            background-color: #000000;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i>HackGuardian</i></h1>
+        <nav>
+            <a href="#" onclick="showAbout()">About</a>
+            <a href="#resources" onclick="showResources()">Resources</a>
+            <a href="#contact">Contact</a>
+<!--  -->
+{% if 'user_id' in session %}
+<a href="{{ url_for('signout') }}">Sign Out</a>
+<!-- <a href="{{ url_for('pss_test') }}">PSS Test</a> -->
+<a href="{{ url_for('stressdata') }}">Your Data</a>
+
+{% else %}
+<a href="{{ url_for('signinup') }}">Sign In/Up</a>
+{% endif %}
+<!--correct  -->
+          <!-- <a href="{{ url_for('signinup') }}">SignIn/Up</a> -->
+          <!-- <a href="{{ url_for('pss_test') }}">PSS Test</a> -->
+          <!-- correct -->
+        <!-- <a href="{{ url_for('pss_test') }}">PSS Test</a>
+        <a href="/signout">Sign Out</a>-->
+          <!-- <a href="pa.html">PSS Test</a> -->
+            <!-- <a href="/signinup">Sign In</a> -->
+        </nav>
+    </header>
+    <div class="container">
+        <p>If you're struggling with thoughts of suicide, you're not alone. Help is available.</p>
+        <p>Our website provides resources, support, and guidance for those in need.</p>
+        <a href="#contact" class="cta-button" onclick="showAlert()">Get Help Now</a>
+       <!--  -->
+       <!--  -->
+      
+      <!-- Overlay with message box -- -->
+       <!-- <button onclick="showAlert()">Get Help Now</button> -->
+        <!--  -->
+    </div>
+    <footer>
+        <p>&copy; 2024 Mental Distress</p>
+    </footer><br>
+    <div id="aboutContent" style="display: none;">
+        <div class="container">
+            <h2>About HackGuardian</h2>
+            <p>This is a brief description of HackGuardian and its mission to provide support and guidance to individuals struggling with thoughts of suicide.</p>
+           </div>
+    </div>
+    <div id="resourcesContent" style="display: none;">
+        <div class="container">
+            <h2>Suicide Statistics</h2>
+            <p>Suicide is one of the leading causes of death in the United States. This chart shows the number of suicide deaths by month and year, including the most recent provisional data available. You can access the full interactive chart by clicking on the image or the button below.</p>
+            <!-- You can add more content here, such as images or links -->
+        </div>
+    </div>
+    <!-- {% if 'user_id' in session %}
+            <a href="{{ url_for('pss_test') }}">Take PSS Test</a>
+        {% endif %} -->
+        <script>
+            // Function to toggle overlay display
+            function showAlert() {
+            alert("iCALL\nHours: Mon—Sat, 10 AM—8 PM\nLanguages: English, Hindi, Marathi, Gujarati, Bengali, Assamese, Punjabi, and Malayalam\nContact: 9152987821");
+        }
+        </script>
+
+</body>
+</html>

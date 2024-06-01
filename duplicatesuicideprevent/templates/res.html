@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Suicide Prevention</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: whitesmoke;
+            color: #333;
+            margin-top: 0;
+        }
+        
+        h1, h2, p {
+            color: black;
+        }
+        
+        header {
+            background-color:#4a038dcb;
+            color:black;
+            padding: 5px 0;
+            height: 90px;
+            /* margin-top: 20px; */
+            position: fixed;
+            top: 0; /* Stick to the top */
+            width: 100%
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            height: 100%;
+        }
+
+        nav img {
+            margin-left: 20px;
+        }
+
+        nav a {
+            color:white;
+            text-decoration: none;
+            padding: 10px 10px 10px 9px;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            border: 2px solid white;
+            border-radius:20px 20px 20px 20px;
+        }
+
+        nav a:hover {
+            background-color: #52069ecb;
+            color:white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center content horizontally */
+            background-size: cover;
+            background-position: center;
+            color:white;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .hero img {
+            max-width: 40%;
+            margin-right: 30px;
+            float: left; /* Float the image to the left */
+            margin-top: 100px;
+            margin-left: 100px;
+        }
+
+        .hero div {
+            width: calc(60% - 30px); /* Adjusted width for text content */
+        }
+
+        .hero h1,
+        .hero p {
+            text-align: left;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #38016bcb;
+            color: #fff;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            width: 130px;
+            text-align: center;
+            margin-right: 150px;
+        }
+
+        .cta-button:hover {
+            background-color: #7bb5e1;
+        }
+
+        footer {
+            background-color: #e8e6e9;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        #aid {
+            font-size: large;
+            text-align: left;
+            margin-right: 150px;
+            padding-left: 70px;
+        }
+        .ab{
+            margin-left: 700px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="/static/logovio.png" alt="HackGuardian Logo" style="width: 150px;">
+            <a class="ab" href="/">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('res') }}">Resources</a>
+            <a href="{{url_for('contact')}}">Contact</a>
+            <!-- <a href="{{ url_for('signinup') }}">SignIn/Up</a> -->
+            <!-- <a href="{{ url_for('pss_test') }}">PSS Test</a> -->
+        </nav>
+    </header>
+    <div class="hero">
+        <img class="n6" src="/static/rn1.png" alt="image2">
+        <div id="aid">
+            <h1 id="abhead">Resource  </h1>
+            <p>
+
+                Take our confidential PSS (Patient Health
+                Questionnaire-9) test for mental health
+                assessment. Based on your results, receive
+                personalized recommendations for self-care,
+                therapy, and support resources. Together, we
+                can navigate through tough times and prioritize
+                your well-being. Your mental health matters.  </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 by Mental Distress</p>
+            <div class="social-links">
+                <i class="fa fa-facebook-f" style="font-size:25px;color:rgba(80, 70, 223, 0.748)"></i>
+               <i class="fa fa-twitter" style="font-size:25px;color:red"></i>
+              <i class="fa fa-instagram" style="font-size:25px;color:red"></i>
+           </div>
+        </div>
+    </footer>
+</body>
+</html>

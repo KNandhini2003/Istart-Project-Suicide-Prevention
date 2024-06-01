@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academic Distress Questionnaire</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    .questionnaire {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .question {
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+<div class="questionnaire">
+    <div class="question">
+        <label>How are you feeling about your studies?</label><br>
+        <input type="radio" name="studyFeeling" value="stressed"> Stressed<br>
+        <input type="radio" name="studyFeeling" value="okay"> Okay<br>
+        <input type="radio" name="studyFeeling" value="overwhelmed"> Overwhelmed<br>
+    </div>
+    <div id="challengeQuestion" class="question" style="display: none;">
+        <label>Did you feel any of this challenge?</label><br>
+        <input type="checkbox" name="challenges" value="time"> Time Management<br>
+        <input type="checkbox" name="challenges" value="complexity"> Subject Complexity<br>
+        <input type="checkbox" name="challenges" value="learning"> Learning Style<br>
+        <input type="checkbox" name="challenges" value="background"> Education Background<br>
+    </div>
+    <div id="specificTaskQuestion" class="question" style="display: none;">
+        <label>Which specific tasks feel most overwhelming to you?</label><br>
+        <input type="checkbox" name="tasks" value="writing"> Writing Assignments<br>
+        <input type="checkbox" name="tasks" value="test"> Test Preparation<br>
+        <input type="checkbox" name="tasks" value="group"> Group Projects<br>
+    </div>
+</div>
+
+<script>
+    const challengeQuestion = document.getElementById('challengeQuestion');
+    const specificTaskQuestion = document.getElementById('specificTaskQuestion');
+
+    document.querySelectorAll('input[name="studyFeeling"]').forEach((input) => {
+        input.addEventListener('change', () => {
+            if (input.value === 'stressed') {
+                challengeQuestion.style.display = 'block';
+                specificTaskQuestion.style.display = 'none';
+            } else if (input.value === 'overwhelmed') {
+                specificTaskQuestion.style.display = 'block';
+                challengeQuestion.style.display = 'none';
+            } else {
+                challengeQuestion.style.display = 'none';
+                specificTaskQuestion.style.display = 'none';
+            }
+        });
+    });
+</script>
+</body>
+</html>

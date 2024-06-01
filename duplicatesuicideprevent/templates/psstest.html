@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link href="responsitive.css" rel="stylesheet" type="text/css"> -->
+<title>PSS Test</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        color: #333;
+    }
+    header {
+        background-color: #22043d; /* Violet */
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        margin: 0 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    nav a:hover {
+        background-color: #38016bcb; /* Slightly darker violet */
+    }
+    .main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    p {
+        font-size: 1.2em;
+        line-height: 1.6;
+    }
+    .question {
+        font-weight: bold;
+    }
+    fieldset {
+        border: none;
+        margin-bottom: 20px;
+    }
+    input[type="radio"] {
+        margin-right: 10px;
+    }
+   #back, input[type="submit"] {
+        background-color: #38016bcb; /* Violet */
+        color: #fff;
+        font-size: 1.2em;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    #back{
+        text-decoration: none;
+        margin-left: 75%;
+    }
+  #back:hover,  input[type="submit"]:hover {
+        background-color: #7bb5e1; /* Slightly darker violet */
+    }
+</style>
+</head>
+
+<body>
+<header>
+<h1>PSS Test</h1>
+
+</header>
+
+<!-- <nav>
+    <ul>
+        <li><a href="index.html"><b>Home</b></a></li>
+        <li><a href=""><b>About</b></a></li>
+        <li><a href=""><b>Topics</b></a></li>  
+        <li style="float:right"><a href="https://goo.gl/forms/NyQObKza4ckmmHpo1" target="_blank"><b>Feedback</b></a></li>
+    </ul>
+</nav> -->
+
+<div class="main">
+    <!-- <h1>Stress Assessment Quiz</h1> -->
+    <!-- <p><i>Answer the following questions based on your experiences in the last month.</i></p> -->
+    {% if 'user_id' in session %}
+    <form id="myForm"  action="/submit-pss" method="post">
+        
+    <!-- <form id="myForm" action="submit.php" method="post"></form> -->
+        <p class="question">1. In the last month, how often have you been upset because of something that happened unexpectedly?</p>
+        <p class="tamil">கடந்த மாதத்தில், எதிர்பாராத விதமாக நடந்த சம்பவத்தால் நீங்கள் எத்தனை முறை வருத்தப்பட்டீர்கள்?</p>
+   
+        <fieldset id="q1">
+            <input type="radio" name="q1" value="0" id="q1a" required><label for="q1a">Never</label><br>
+            <input type="radio" name="q1" value="1" id="q1b" required><label for="q1b">Almost Never</label><br>
+            <input type="radio" name="q1" value="2" id="q1c" required><label for="q1c">Sometimes</label><br>
+            <input type="radio" name="q1" value="3" id="q1d" required><label for="q1d">Fairly Often</label><br>
+            <input type="radio" name="q1" value="4" id="q1e" required><label for="q1e">Very Often</label><br>
+        </fieldset>
+        <!-- Add more questions here with the same format -->
+        <p class="question">2. In the last month, how often have you felt that you were unable to control the
+            important things in your life?</p>
+        <fieldset id="q2">
+            <input type="radio" name="q2" value="0" id="q1a" required><label for="q1a">Never</label><br>
+            <input type="radio" name="q2" value="1" id="q1b" required><label for="q1b">Almost Never</label><br>
+            <input type="radio" name="q2" value="2" id="q1c" required><label for="q1c">Sometimes</label><br>
+            <input type="radio" name="q2" value="3" id="q1d" required><label for="q1d">Fairly Often</label><br>
+            <input type="radio" name="q2" value="4" id="q1e" required><label for="q1e">Very Often</label><br>
+        </fieldset>
+        <p class="question">3. In the last month, how often have you felt nervous and stressed?</p>
+        <fieldset id="q3">
+            <input type="radio" name="q3" value="0" id="q1a" required><label for="q1a">Never</label><br>
+            <input type="radio" name="q3" value="1" id="q1b" required><label for="q1b">Almost Never</label><br>
+            <input type="radio" name="q3" value="2" id="q1c" required><label for="q1c">Sometimes</label><br>
+            <input type="radio" name="q3" value="3" id="q1d" required><label for="q1d">Fairly Often</label><br>
+            <input type="radio" name="q3" value="4" id="q1e" required><label for="q1e">Very Often</label><br>
+        </fieldset> 
+       
+
+        <p class="question">4.In the last month, how often have you felt confident about your ability to handle </p> 
+        <fieldset id="q4">
+            <input type="radio" name="q4" value="0" id="q1a" required><label for="q1a">Never</label><br>
+            <input type="radio" name="q4" value="1" id="q1b" required><label for="q1b">Almost Never</label><br>
+            <input type="radio" name="q4" value="2" id="q1c" required><label for="q1c">Sometimes</label><br>
+            <input type="radio" name="q4" value="3" id="q1d" required><label for="q1d">Fairly Often</label><br>
+            <input type="radio" name="q4" value="4" id="q1e" required><label for="q1e">Very Often</label><br>
+        </fieldset> 
+            <p class="question">5.In the last month, how often have you felt that things were going your way?</p>
+            <fieldset id="q5">
+                <input type="radio" name="q5" value="0" id="q1a" required><label for="q1a">Never</label><br>
+                <input type="radio" name="q5" value="1" id="q1b" required><label for="q1b">Almost Never</label><br>
+                <input type="radio" name="q5" value="2" id="q1c" required><label for="q1c">Sometimes</label><br>
+                <input type="radio" name="q5" value="3" id="q1d" required><label for="q1d">Fairly Often</label><br>
+                <input type="radio" name="q5" value="4" id="q1e" required><label for="q1e">Very Often</label><br>
+            </fieldset>
+            <p class="question">6.In the last month, how often have you found that you could not cope with all the things that you had to do?</p>
+            <fieldset id="q6">
+                <input type="radio" name="q6" value="0" id="q1a" required><label for="q1a">Never</label><br>
+                <input type="radio" name="q6" value="1" id="q1b" required><label for="q1b">Almost Never</label><br>
+                <input type="radio" name="q6" value="2" id="q1c" required><label for="q1c">Sometimes</label><br>
+                <input type="radio" name="q6" value="3" id="q1d" required><label for="q1d">Fairly Often</label><br>
+                <input type="radio" name="q6" value="4" id="q1e" required><label for="q1e">Very Often</label><br>
+            </fieldset>
+            <p class="question">7.In the last month, how often have you been able to control irritations in
+                your life?</p>
+                <fieldset id="q7">
+                    <input type="radio" name="q7" value="0" id="q1a" required><label for="q1a">Never</label><br>
+                    <input type="radio" name="q7" value="1" id="q1b" required><label for="q1b">Almost Never</label><br>
+                    <input type="radio" name="q7" value="2" id="q1c" required><label for="q1c">Sometimes</label><br>
+                    <input type="radio" name="q7" value="3" id="q1d" required><label for="q1d">Fairly Often</label><br>
+                    <input type="radio" name="q7" value="4" id="q1e" required><label for="q1e">Very Often</label><br>
+                </fieldset>
+            <p class="question">8. In the last month, how often have you felt that you were on top of things?</p>
+            <fieldset id="q8">
+                <input type="radio" name="q8" value="0" id="q1a" required><label for="q1a">Never</label><br>
+                <input type="radio" name="q8" value="1" id="q1b" required><label for="q1b">Almost Never</label><br>
+                <input type="radio" name="q8" value="2" id="q1c" required><label for="q1c">Sometimes</label><br>
+                <input type="radio" name="q8" value="3" id="q1d" required><label for="q1d">Fairly Often</label><br>
+                <input type="radio" name="q8" value="4" id="q1e" required><label for="q1e">Very Often</label><br>
+            </fieldset>
+            <p class="question">9. In the last month, how often have you been angered because of things that
+                happened that were outside of your control?</p>
+                <fieldset id="q9">
+                    <input type="radio" name="q9" value="0" id="q1a" required><label for="q1a">Never</label><br>
+                    <input type="radio" name="q9" value="1" id="q1b" required><label for="q1b">Almost Never</label><br>
+                    <input type="radio" name="q9" value="2" id="q1c" required><label for="q1c">Sometimes</label><br>
+                    <input type="radio" name="q9" value="3" id="q1d" required><label for="q1d">Fairly Often</label><br>
+                    <input type="radio" name="q9" value="4" id="q1e" required><label for="q1e">Very Often</label><br>
+                </fieldset>
+            <p class="question">10.In the last month, how often have you felt difficulties were piling up so high that
+                you could not overcome them?</p><fieldset id="q10">
+                    <input type="radio" name="q10" value="0" id="q1a" required><label for="q1a">Never</label><br>
+                    <input type="radio" name="q10" value="1" id="q1b" required><label for="q1b">Almost Never</label><br>
+                    <input type="radio" name="q10" value="2" id="q1c" required><label for="q1c">Sometimes</label><br>
+                    <input type="radio" name="q10" value="3" id="q1d" required><label for="q1d">Fairly Often</label><br>
+                    <input type="radio" name="q10" value="4" id="q1e" required><label for="q1e">Very Often</label><br>
+                </fieldset>
+<!--  -->
+        <!--  -->
+        
+        <!-- <input type="button" value="Submit" id="submit"> -->
+        <!-- <input type="submit" value="Submit" id="submit"> -->
+        <input type="submit" value="Submit" name="submit" id="submit">
+        <a id="back" href="/">Back</a>
+        <p style="font-size:20px;background-color:lavender;" id="score"></p>
+    </form>
+    {% else %}
+    <p>Please sign in to take the PSS test.</p>
+        <a href="{{ url_for('signinup') }}">Sign In/Up</a>
+    {% endif %}
+</div>
+<!--  -->
+<!--  -->
+
+<!--  -->
+<!--  -->
+
+<!-- <script>
+    // JavaScript code for handling form submission and scoring can be added here
+ // JavaScript code for handling form submission
+ document.getElementById("myForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Show success message
+        alert("Form submitted successfully!");
+
+        // Optionally, you can also reset the form after submission
+        // document.getElementById("myForm").reset();
+    }); -->
+</script>
+
+</body>
+</html>

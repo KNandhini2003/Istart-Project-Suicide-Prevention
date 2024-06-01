@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>chronic</title>
+    <!-- <link rel="stylesheet" type="text/css" href="flexcard1.css"> -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: white;
+            /* padding-top: 180px; */
+            position: relative; /* Added */
+        }
+        header{
+            background-color:rgb(77,12,95);
+            color: black;
+            padding: 2px 0;
+            height: 80px;
+            margin-top:45px;
+        }
+        nav {
+            background-color: rgb(77, 12, 95);
+            padding: 0px 15px; /* Adjust padding as needed */
+            text-align:center;
+            display: flex;
+            align-items: center;
+        }
+        nav img {
+            margin-right: 330px; /* Adjust margin as needed */
+            width: 135px; /* Adjust width as needed */
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0 20px;
+            font-size: 40px;
+        }
+        nav a:hover {
+            background-color:rgb(77, 12, 95);;
+        }
+        .contain {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: white;
+            width: 270px;
+            height: 400px;
+            margin: 10px;
+            border-radius: 20px;
+        }
+        .cardimage {
+            background-color: rgba(86, 11, 118, 0.755);
+            height: 200px;
+            margin-bottom: 15px;
+            background-size: cover;
+            border-radius: 15px 15px 0 0;
+        }
+        .img1 {
+            background-image: url("/static/images1.chronic.jpeg");
+        }
+        .img2 {
+            background-image: url("/static/images2.chronic.jpeg");
+        }
+        .img3 {
+            background-image: url("/static/images3.chronic.jpeg");
+        }
+        .img4 {
+            background-image: url("/static/images4.chronic.jpeg");
+        }
+        .card p {
+            padding: 25px;
+            text-align: justify-all;
+            font-style: inherit;
+        }
+        .card a {
+            background: #38016bcb;
+            color: rgb(233, 212, 212);
+            margin: 20px;
+            padding: 15px;
+            display: block;
+            text-align: center;
+            font-weight: bold;
+        }
+        .card:hover {
+            background-color: #2f063acb;
+            color: rgb(252, 247, 247);
+            cursor: pointer;
+            transform: scale(1.03);
+            transition: all 1s ease;
+        }
+        .container {
+            position:fixed;
+            bottom:20px;
+            right:20px;
+            display: flex;
+            flex-direction: column;
+            align-items:flex-end;
+        }
+        .back-button {
+            padding: 13px 23px;
+            background-color: #070707;
+            color: rgb(243, 236, 236);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.4s;
+            position: fixed;
+            bottom: 20px; /* Set to bottom */
+            right: 20px; /* Set to right */
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background-color: #38016bcb;
+        }
+        .contain {
+            padding-top: 100px;
+        }
+        .res {
+            margin-top: 5%;
+        }
+        .card {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="/static/logovio.png" alt="Suicide Image"> <!-- Replace "suicide_image.jpg" with your actual image path -->
+            <a href="#" font>CHRONIC TEST LEVEL</a>
+        </nav>
+    </header>
+    <section class="contain">
+        <div class="card">
+            <div class="cardimage img1"></div>
+            <h2 style="text-align:center;">Regular  Therapy Sessions</h2>
+            <p>Therapy, counseling, psychologist, psychiatrist.</p>
+         </div>
+
+         <div class="card">
+            <div class="cardimage img2"></div>
+            <h2 style="text-align:center;">Medication Management</h2>
+            <p>Psychiatrist, medication, pharmacotherapy.</p>
+
+         </div>
+
+         <div class="card">
+            <div class="cardimage img3"></div>
+            <h2 style="text-align:center;">Engaging in Self-Care</h2>
+            <p>Prioritize activities that promote physical and emotional well-being. Self-care, exercise, hobbies, relaxation.</p>
+         </div>
+         <div class="card">
+            <div class="cardimage img4"></div>
+            <div class="fleacard">
+                <h2 style="text-align:center;">Building a Support Network</h2>
+                <p>Support network, friends, family, support groups.</p>
+         </div>
+    </section>
+    <div class="container">
+        <!-- <button id="backButton" class="back-button">Back</button> -->
+        <a id="backButton" href="/" class="back-button">Back</a>
+    </div>
+    <script>
+        // Send AJAX request to Flask route to trigger email notification
+        fetch('/send-chronic-notification')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to send test notification');
+                }
+                console.log('Test notification sent successfully');
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+    </script>
+</body>
+</html>
